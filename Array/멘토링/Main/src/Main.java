@@ -34,20 +34,24 @@ public class Main {
     }
 
     public static int solution(int n, int m, int[][] input) {
-
-        int count = 0;
+        int answer = 0;
         
-        for (int i = 1; i <= m; i++) {
-            for (int j = 0; j < m; j++) {
-                for (int k = 0; k < n; k++) {
-                    for (int s = 0; s < m; s++){
-
+        for(int i = 1; i <= m; i ++){
+            for(int j = 1; j <= m; j ++){
+                int count = 0; 
+                for(int k = 0; k < n; k ++){
+                    int pi = 0;
+                    int pj = 0;
+                    for(int s = 0; s < m; s ++){
+                        if(input[k][s] == i) pi = s;
+                        if(input[k][s] == j) pj = s;
                     }
+                    if(pi > pj) count ++;
                 }
+                if(count == n) answer ++;
             }
         }
 
-        return count;
+        return answer;
     }
-
 }
