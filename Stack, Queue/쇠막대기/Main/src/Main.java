@@ -44,19 +44,18 @@ public class Main {
 
     public static int solution(String s){
         int answer = 0;
-        
         Stack<Character> st = new Stack<>();
-        int currentBar = 0;
 
-        // for(Character c : s.toCharArray()){
         for(int i = 0; i < s.length(); i ++){
-            if(!st.isEmpty() && st.peek() != s.charAt(i)){
-                st.pop();
-                currentBar --;
-                answer += currentBar;
-            }else{
+            if(s.charAt(i) == '(') 
                 st.push(s.charAt(i));
-                currentBar ++;
+            else{
+                st.pop();
+                if(s.charAt(i - 1) == ')'){
+                    answer ++;
+                }else{
+                    answer += st.size();
+                }
             }
         }
 
