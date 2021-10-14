@@ -41,23 +41,50 @@ public class Main {
     }
     
     public static int solution(int n, int k, int[] arr){
-        int answer = 0;
-        Queue<Integer> que = new LinkedList<>();
-        boolean isDanger = false;
+        Queue<item> que = new LinkedList<>();
+        int answer = 1;
 
         for(int i = 0; i < n; i ++){
-            que.offer(arr[i]);
-            for(int j = i + 1; j < que.size(); j++){
-                isDanger = false;
-                if(que.peek() < que.){
-                    que.offer(que.poll());
-                    isDanger = true;
+            que.offer(new item(i, arr[i]));
+        }
+
+        while(!que.isEmpty()){
+            item person = que.poll();
+            
+            for(item x : que){
+                if(person.getDanger() < x.getDanger()){
+                    que.offer(person);
+                    person = null;
                     break;
                 }
             }
-            if(isDanger) answer ++;
+            if(person != null){
+                if(person.getId() == k) 
+                    return answer;
+                else
+                    answer ++;
+            }
         }
 
         return answer;
     }
+}
+
+class item{
+    private Integer id;
+    private Integer danger;
+
+    public item(Integer id, Integer danger){
+        this.id = id;
+        this.danger = danger;
+    }
+
+    public Integer getId(){
+        return this.id;
+    }
+
+    public Integer getDanger(){
+        return this.danger;
+    }
+
 }
