@@ -12,16 +12,19 @@ public class Main {
     }
 
     public static int[] solution(int n, int[] arr){
-        int min = Integer.MAX_VALUE;
+        
+        int temp = 0;
 
         for(int i = 0; i < n; i ++){
-            for(int j = i; j < n; j ++){
-                if(arr[i] > arr[j]){
-                    min = arr[j];
-                    arr[j] = arr[i];
-                    arr[i] = min;
-                }
+            int idx = i;
+            for(int j = i + 1; j < n; j ++){
+               if(arr[j] < arr[idx]) {
+                    idx = j;
+               }
             }
+            temp = arr[i];
+            arr[i] = arr[idx];
+            arr[idx] = temp;
         }
 
         return arr;
