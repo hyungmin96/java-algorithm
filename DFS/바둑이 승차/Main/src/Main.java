@@ -54,7 +54,6 @@ public class Main {
 
     public static void dfs(int start, int total, int[] arr){
         if(total > n) return;
-        System.out.println("count recursion" + ++count + " : " + total);
         if(k == start){
             answer = Math.max(answer, total);
             return;

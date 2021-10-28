@@ -38,13 +38,13 @@ public class Main {
             int len = que.size();
             for (int i = 0; i < len; i++) {
                 curr = que.poll();
-                if(curr == k)
-                    return level;
-                for(int j = 0; j < dis.length; j ++)
+                for(int j = 0; j < dis.length; j ++){
+                    if(curr == k) return level ++;
                     if(curr + dis[j] >= 1 && curr + dis[j] <= 100000 && ch[curr + dis[j]] != 1){
                         ch[curr + dis[j]] = 1;
                         que.offer(curr + dis[j]);
                     }
+                }
             }
             level++;
         }

@@ -31,15 +31,6 @@ public class Main {
     static boolean flag = false;
     static int[] arr;
 
-    public static class Node{
-        int index;
-        int sum;
-        public Node(int index, int sum){
-            this.index = index;
-            this.sum = sum;
-        }
-    }
-
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         n = Integer.parseInt(br.readLine());
@@ -55,7 +46,10 @@ public class Main {
         if(flag || sum > total / 2) return;
         // 마지막 노드의 Level(n)이 재귀적으로 들어온 l 인자와 같아질 경우 return
         if(n == l){
-            if(total - sum == sum) answer = "YES"; flag = !flag;
+            if(total - sum == sum){
+                answer = "YES"; 
+                flag = true;
+            }
             return;
         }else{
             // l + 1의 자식노드를 사용할 경우 sum 값에 해당 자식값을 더함
