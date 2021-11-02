@@ -27,12 +27,10 @@ public class Main {
     static class Position {
         int x;
         int y;
-        int day;
 
-        public Position(int x, int y, int day) {
+        public Position(int x, int y) {
             this.x = x;
             this.y = y;
-            this.day = day;
         }
     }
 
@@ -56,7 +54,7 @@ public class Main {
         for (int x = 0; x < m; x ++)
             for (int y = 0; y < n; y++)
                 if (board[x][y] == 1) {
-                    items.add(new Position(x, y, 0));
+                    items.add(new Position(x, y));
                 }
 
         bfs(items, m, n, board, visited, dx, dy);
@@ -84,7 +82,7 @@ public class Main {
                     if (nx >= 0 && ny >= 0 && nx < x_size && ny < y_size && board[nx][ny] == 0 && !visited[nx][ny]) {
                         visited[nx][ny] = true;
                         board[nx][ny] = 1;
-                        que.offer(new Position(nx, ny, 0));
+                        que.offer(new Position(nx, ny));
                     }
                 }
             }

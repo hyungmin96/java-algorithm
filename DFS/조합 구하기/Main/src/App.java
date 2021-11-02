@@ -35,8 +35,11 @@ public class App {
             return;
         }else{
             for(int i = index; i < arr.length; i ++){
+                if(visited[i]) continue;
+                visited[i] = true;
                 output[depth] = arr[i];
-                dfs(i + 1, depth + 1, level, arr, visited, output);
+                dfs(i, depth + 1, level, arr, visited, output);
+                visited[i] = false;
             }
         }
 
